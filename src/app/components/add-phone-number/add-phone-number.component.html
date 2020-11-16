@@ -1,0 +1,18 @@
+<div>
+  <div *ngIf="currentUser">
+    <div *ngIf="!savedUserPhoneNumber">
+      <p>Please enter your phone number to recieve doorbell notifications:</p>
+      <input
+        type="text"
+        [(ngModel)]="newUserPhoneNumber"
+        placeholder="Phone Number"
+      />
+      <button (click)="savePhoneNumber()" style="margin-left: 5px">Save</button>
+    </div>
+
+    <div *ngIf="savedUserPhoneNumber">
+      Phone number to recieve doorbell notifications: {{ savedUserPhoneNumber }}
+    </div>
+  </div>
+  <div *ngIf="!currentUser">Please login or create an account.</div>
+</div>

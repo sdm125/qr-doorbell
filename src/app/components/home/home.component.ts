@@ -7,11 +7,12 @@ import netlifyIdentity from 'netlify-identity-widget';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  currentUserName: String;
+
   constructor() {}
 
   ngOnInit(): void {
-    netlifyIdentity.init({
-      locale: 'en', // defaults to 'en'
-    });
+    this.currentUserName =
+      netlifyIdentity.currentUser().user_metadata.full_name || '';
   }
 }

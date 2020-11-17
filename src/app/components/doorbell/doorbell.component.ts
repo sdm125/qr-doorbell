@@ -15,11 +15,12 @@ export class DoorbellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       if (params.hasOwnProperty('number')) {
         this.phoneNumber = params.number;
       }
     });
+    console.log(this.phoneNumber);
   }
 
   ringBell() {

@@ -7,7 +7,7 @@ exports.handler = async function(event, context) {
   .create({
      body: 'Ding dong',
      from: '+15177973455',
-     to: JSON.parse(event.body.number)
+     to: JSON.parse(event.body).number
    })
   .then(message => ({
     statusCode: 200,

@@ -1,4 +1,13 @@
 <div>
-  <h1>Welcome {{ currentUserName }}!</h1>
+  <h2>Welcome {{ currentUserName }}!</h2>
   <app-add-phone-number></app-add-phone-number>
+  <div *ngIf="qrCodeUrl">
+    <br />
+    <a
+      href="http://api.qrserver.com/v1/create-qr-code/?data={{
+        qrCodeUrl
+      }}&size=200x200"
+      >Click here to view your Doorbell QR Code</a
+    >
+  </div>
 </div>

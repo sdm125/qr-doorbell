@@ -7,12 +7,20 @@ import netlifyIdentity from 'netlify-identity-widget';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  currentUserName: String;
+  currentUserName: string;
+  currentUserPhoneNumber: number;
+  qrCodeUrl: string;
 
   constructor() {}
 
   ngOnInit(): void {
     this.currentUserName =
       netlifyIdentity.currentUser().user_metadata.full_name || '';
+    this.currentUserPhoneNumber =
+      netlifyIdentity.currentUser().user_metadata.full_name.phone_number || 0;
+    this.qrCodeUrl =
+      `${encodeURIComponent(location.href)}?number=${
+        this.currentUserPhoneNumber
+      }` || '';
   }
 }

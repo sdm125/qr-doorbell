@@ -8,10 +8,12 @@ import netlifyIdentity from 'netlify-identity-widget';
 })
 export class AppComponent {
   title = 'qr-doorbell';
+  currentUser: Object;
 
   ngOnInit(): void {
     netlifyIdentity.init({
       locale: 'en', // defaults to 'en'
     });
+    this.currentUser = netlifyIdentity.currentUser();
   }
 }

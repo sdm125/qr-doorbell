@@ -9,8 +9,11 @@ export class DoorbellService {
   constructor(private http: HttpClient) {}
 
   ringDoorbell(phoneNumber: string): Observable<any> {
-    return this.http.post('/.netlify/functions/ring-doorbell', {
-      number: phoneNumber,
-    });
+    return this.http.post(
+      '/.netlify/functions/ring-doorbell',
+      JSON.stringify({
+        number: phoneNumber,
+      })
+    );
   }
 }

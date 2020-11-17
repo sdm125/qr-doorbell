@@ -21,4 +21,10 @@ export class DoorbellComponent implements OnInit {
       }
     });
   }
+
+  ringBell() {
+    this.doorbell
+      .ringDoorbell(this.phoneNumber)
+      .subscribe((data) => console.log(data));
+  }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'history', component: HistoryComponent },
-  { path: 'doorbell', component: DoorbellComponent },
+  { path: 'doorbell/:phonenumber', component: DoorbellComponent },
 ];
 
 @NgModule({

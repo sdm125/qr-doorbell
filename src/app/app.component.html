@@ -8,7 +8,11 @@
       </li>
       <li *ngIf="currentUser"><a href="#" routerLink="/history">History</a></li>
       <li *ngIf="currentUser">
-        <a href="#" routerLink="/doorbell">Doorbell</a>
+        <a
+          href="#"
+          routerLink="/doorbell/{{ currentUser.user_metadata.phone_number }}"
+          >Doorbell</a
+        >
       </li>
       <li class="login" data-netlify-identity-button></li>
     </ul>

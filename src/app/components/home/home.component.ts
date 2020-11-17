@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.currentUserPhoneNumber =
       `+1${netlifyIdentity.currentUser().user_metadata.phone_number}` || '';
     this.qrCodeUrl =
-      `${encodeURIComponent(location.href)}/doorbell?number=${
+      `${encodeURIComponent(location.href)}doorbell/${
         this.currentUserPhoneNumber
       }` || '';
   }

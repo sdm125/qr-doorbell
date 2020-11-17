@@ -8,7 +8,7 @@ import netlifyIdentity from 'netlify-identity-widget';
 })
 export class HomeComponent implements OnInit {
   currentUserName: string;
-  currentUserPhoneNumber: number;
+  currentUserPhoneNumber: string;
   qrCodeUrl: string;
 
   constructor() {}
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.currentUserName =
       netlifyIdentity.currentUser().user_metadata.full_name || '';
     this.currentUserPhoneNumber =
-      netlifyIdentity.currentUser().user_metadata.full_name.phone_number || 0;
+      `+1${netlifyIdentity.currentUser().user_metadata.phone_number}` || '';
     this.qrCodeUrl =
       `${encodeURIComponent(location.href)}?number=${
         this.currentUserPhoneNumber

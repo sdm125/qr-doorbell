@@ -18,7 +18,7 @@ export class DoorbellComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       if (params.hasOwnProperty('number')) {
-        this.phoneNumber = params.number;
+        this.phoneNumber = decodeURIComponent(params.number);
       }
     });
   }

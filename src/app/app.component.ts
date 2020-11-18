@@ -15,5 +15,13 @@ export class AppComponent {
       locale: 'en', // defaults to 'en'
     });
     this.currentUser = netlifyIdentity.currentUser();
+
+    netlifyIdentity.on('login', (user) => {
+      location.reload();
+    });
+
+    netlifyIdentity.on('logout', (user) => {
+      location.reload();
+    });
   }
 }

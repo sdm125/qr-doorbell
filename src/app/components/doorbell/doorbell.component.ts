@@ -20,7 +20,6 @@ export class DoorbellComponent implements OnInit {
         this.phoneNumber = params.number;
       }
     });
-    console.log(this.phoneNumber);
   }
 
   ringBell() {

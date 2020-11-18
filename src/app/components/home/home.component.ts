@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.currentUserName =
       netlifyIdentity.currentUser().user_metadata.full_name || '';
     this.currentUserPhoneNumber =
-      `+1${netlifyIdentity.currentUser().user_metadata.phone_number}` || '';
+      netlifyIdentity.currentUser().user_metadata.phone_number || '';
     this.qrCodeUrl =
       `${encodeURIComponent(location.href)}doorbell/${
         this.currentUserPhoneNumber

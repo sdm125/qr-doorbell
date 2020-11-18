@@ -1,13 +1,14 @@
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+const CryptoJS = require("crypto-js");
 
 exports.handler = async function(event, context) {
   return client.messages
   .create({
      body: 'Ding dong',
-     from: '+15177973455',
-     to: JSON.parse(event.body).number
+     from: process.env.TWILIO_PHONE_NUMBER,
+     to: `+1${CryptoJS.AES.decrypt(JSON.parse(event.body).number, process.env.CRYPTO_KEY)}`
    })
   .then(message => ({
     statusCode: 200,

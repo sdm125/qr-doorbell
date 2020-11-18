@@ -11,6 +11,7 @@ export class AddPhoneNumberComponent implements OnInit {
   currentUser: Object;
   savedUserPhoneNumber: number;
   newUserPhoneNumber: number;
+  edit: boolean;
 
   constructor(private userService: UserService) {}
 

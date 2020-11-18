@@ -4,10 +4,6 @@
     <ul>
       <li *ngIf="currentUser"><a href="#" routerLink="/">Home</a></li>
       <li *ngIf="currentUser">
-        <a href="#" routerLink="/settings">Settings</a>
-      </li>
-      <li *ngIf="currentUser"><a href="#" routerLink="/history">History</a></li>
-      <li *ngIf="currentUser">
         <a
           href="#"
           routerLink="/doorbell/{{ currentUser.user_metadata.phone_number }}"

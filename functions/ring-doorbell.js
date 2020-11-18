@@ -8,7 +8,7 @@ exports.handler = async function(event, context) {
   .create({
      body: 'Ding dong',
      from: process.env.TWILIO_PHONE_NUMBER,
-     to: `+1${CryptoJS.AES.decrypt(JSON.parse(event.body).number, process.env.CRYPTO_KEY)}`
+     to: `+1${CryptoJS.AES.decrypt(JSON.parse(event.body).number, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)}`
    })
   .then(message => ({
     statusCode: 200,

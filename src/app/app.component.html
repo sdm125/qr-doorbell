@@ -4,11 +4,7 @@
     <ul>
       <li *ngIf="currentUser"><a href="#" routerLink="/">Home</a></li>
       <li *ngIf="currentUser">
-        <a
-          href="#"
-          routerLink="/doorbell/{{ currentUser.user_metadata.phone_number }}"
-          >Doorbell</a
-        >
+        <a href="#" routerLink="/doorbell/{{ encodedPhoneNumber }}">Doorbell</a>
       </li>
       <li class="login" data-netlify-identity-button></li>
     </ul>

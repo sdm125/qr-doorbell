@@ -9,12 +9,17 @@ import netlifyIdentity from 'netlify-identity-widget';
 export class AppComponent {
   title = 'qr-doorbell';
   currentUser: Object;
+  encodedPhoneNumber: string;
 
   ngOnInit(): void {
     netlifyIdentity.init({
       locale: 'en', // defaults to 'en'
     });
     this.currentUser = netlifyIdentity.currentUser();
+
+    this.encodedPhoneNumber = encodeURIComponent(
+      netlifyIdentity.currentUser().user_metadata.phone_number
+    );
 
     netlifyIdentity.on('login', (user) => {
       location.reload();

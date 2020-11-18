@@ -11,15 +11,13 @@ export class UserService {
 
   async updateUserPhoneNumber(phoneNumber: number): Promise<any> {
     const res = await this.getEncryptedPhoneNumber(phoneNumber).toPromise();
-    console.log(res);
 
-    return res;
-    // return netlifyIdentity.gotrue.currentUser().update({
-    //   data: {
-    //     ...netlifyIdentity.currentUser().user_metadata,
-    //     phone_number: data.encrypted_number,
-    //   },
-    // });
+    return netlifyIdentity.gotrue.currentUser().update({
+      data: {
+        ...netlifyIdentity.currentUser().user_metadata,
+        phone_number: res.encrypted_number,
+      },
+    });
   }
 
   getEncryptedPhoneNumber(phoneNumber: number): Observable<any> {

@@ -2,6 +2,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #eee;
 }
 
 nav {
@@ -12,6 +13,12 @@ nav {
 
     li {
       margin-right: 15px;
+
+      a,
+      .netlify-identity-button {
+        text-decoration: none;
+        color: #007bff !important;
+      }
     }
   }
 }

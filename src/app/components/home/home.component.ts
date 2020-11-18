@@ -26,13 +26,5 @@ export class HomeComponent implements OnInit {
       this.currentUserName = '';
       this.qrCodeUrl = '';
     }
-
-    netlifyIdentity.on('login', (user) => {
-      location.reload();
-    });
-
-    netlifyIdentity.on('logout', (user) => {
-      location.reload();
-    });
   }
 }

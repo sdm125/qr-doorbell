@@ -1,3 +1,4 @@
-<div>
-  <button (click)="ringBell()">Ring Doorbell</button>
+<div class="container">
+  <button (click)="ringBell()">🔔 Ring Doorbell</button>
+  <h2 *ngIf="bellHasRung">Ding Dong!</h2>
 </div>

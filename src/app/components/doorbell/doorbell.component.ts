@@ -8,6 +8,7 @@ import { DoorbellService } from '../../services/doorbell.service';
 })
 export class DoorbellComponent implements OnInit {
   phoneNumber: string;
+  bellHasRung: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +24,9 @@ export class DoorbellComponent implements OnInit {
   }
 
   ringBell() {
-    this.doorbell
-      .ringDoorbell(this.phoneNumber)
-      .subscribe((data) => console.log(data));
+    this.doorbell.ringDoorbell(this.phoneNumber).subscribe((data) => {
+      console.log(data);
+      this.bellHasRung = true;
+    });
   }
 }

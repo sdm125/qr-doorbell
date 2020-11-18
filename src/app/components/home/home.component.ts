@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
           netlifyIdentity.currentUser().user_metadata.phone_number
         )
         .subscribe((data) => {
-          this.currentUserPhoneNumber = data.decrypted_phone;
+          this.currentUserPhoneNumber = data.decrypted_number;
           this.qrCodeUrl = `${encodeURIComponent(location.href)}doorbell/${
             this.currentUserPhoneNumber
           }`;

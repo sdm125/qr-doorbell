@@ -10,14 +10,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   async updateUserPhoneNumber(phoneNumber: number): Promise<any> {
-    let encyptedNum = await this.getEncryptedPhoneNumber(
-      phoneNumber
-    ).toPromise();
+    const res = await this.getEncryptedPhoneNumber(phoneNumber).toPromise();
+    const data = res.json();
 
     return netlifyIdentity.gotrue.currentUser().update({
       data: {
         ...netlifyIdentity.currentUser().user_metadata,
-        phone_number: JSON.parse(encyptedNum).encrypted_number,
+        phone_number: data.encrypted_number,
       },
     });
   }

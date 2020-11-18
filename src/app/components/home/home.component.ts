@@ -14,12 +14,6 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.currentUserName =
-      netlifyIdentity.currentUser().user_metadata.full_name || '';
-    this.qrCodeUrl =
-      `${encodeURIComponent(location.href)}doorbell/${
-        this.currentUserPhoneNumber
-      }` || '';
     if (netlifyIdentity.currentUser()) {
       this.userService
         .getDecryptedPhoneNumber(
@@ -27,9 +21,15 @@ export class HomeComponent implements OnInit {
         )
         .subscribe((data) => {
           this.currentUserPhoneNumber = data.decrypted_phone;
+          this.qrCodeUrl = `${encodeURIComponent(location.href)}doorbell/${
+            this.currentUserPhoneNumber
+          }`;
         });
+      this.currentUserName = netlifyIdentity.currentUser().user_metadata.full_name;
     } else {
       this.currentUserPhoneNumber = '';
+      this.currentUserName = '';
+      this.qrCodeUrl = '';
     }
   }
 }

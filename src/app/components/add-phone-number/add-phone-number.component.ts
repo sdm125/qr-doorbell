@@ -32,7 +32,7 @@ export class AddPhoneNumberComponent implements OnInit {
       .updateUserPhoneNumber(this.newUserPhoneNumber)
       .then((user) => {
         this.savedUserPhoneNumber = user.user_metadata.phone_number;
-
+        this.userService.validatePhoneNumber(user.user_metadata.phone_number);
         this.userService
           .getDecryptedPhoneNumber(
             netlifyIdentity.currentUser().user_metadata.phone_number

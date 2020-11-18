@@ -33,4 +33,11 @@ export class UserService {
       JSON.stringify({ encrypted_number: encryptedNumber })
     );
   }
+
+  validatePhoneNumber(encryptedNumber: string): Observable<any> {
+    return this.http.post(
+      '/.netlify/functions/validate-phone-number',
+      JSON.stringify({ encrypted_number: encryptedNumber })
+    );
+  }
 }

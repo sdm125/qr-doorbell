@@ -22,7 +22,7 @@ export class UserService {
 
   getEncryptedPhoneNumber(phoneNumber: number): Observable<any> {
     return this.http.post(
-      '/.netlify/functions/get-encrpted-phone-number',
+      '/.netlify/functions/get-encrypted-phone-number',
       JSON.stringify({ number: phoneNumber })
     );
   }

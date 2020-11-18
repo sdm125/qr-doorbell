@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import netlifyIdentity from 'netlify-identity-widget';
 import { UserService } from '../../services/user.service';
-
 @Component({
   selector: 'app-add-phone-number',
   templateUrl: './add-phone-number.component.html',
@@ -17,9 +16,15 @@ export class AddPhoneNumberComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = netlifyIdentity.currentUser();
-    this.savedUserPhoneNumber = this.currentUser
-      ? netlifyIdentity.currentUser().user_metadata.phone_number
-      : 0;
+    if (this.currentUser) {
+      this.userService
+        .getDecryptedPhoneNumber(
+          netlifyIdentity.currentUser().user_metadata.phone_number
+        )
+        .subscribe((data) => {
+          this.savedUserPhoneNumber = data.decrypted_number;
+        });
+    }
   }
 
   savePhoneNumber() {

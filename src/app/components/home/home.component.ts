@@ -15,16 +15,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (netlifyIdentity.currentUser()) {
-      this.userService
-        .getDecryptedPhoneNumber(
-          netlifyIdentity.currentUser().user_metadata.phone_number
-        )
-        .subscribe((data) => {
-          this.currentUserPhoneNumber = data.decrypted_number;
-          this.qrCodeUrl = `${encodeURIComponent(location.href)}doorbell/${
-            this.currentUserPhoneNumber
-          }`;
-        });
+      this.qrCodeUrl = `${encodeURIComponent(location.href)}doorbell/${
+        netlifyIdentity.currentUser().user_metadata.phone_number
+      }`;
       this.currentUserName = netlifyIdentity.currentUser().user_metadata.full_name;
     } else {
       this.currentUserPhoneNumber = '';

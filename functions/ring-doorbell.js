@@ -12,6 +12,6 @@ exports.handler = async function(event, context) {
    })
   .then(message => ({
     statusCode: 200,
-    body: message.sid
+    body: JSON.stringify(message.sid)
   }))
 }

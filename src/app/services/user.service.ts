@@ -26,4 +26,11 @@ export class UserService {
       JSON.stringify({ number: phoneNumber })
     );
   }
+
+  getDecryptedPhoneNumber(encryptedNumber: string): Observable<any> {
+    return this.http.post(
+      '/.netlify/functions/get-decrypted-phone-number',
+      JSON.stringify({ encrypted_number: encryptedNumber })
+    );
+  }
 }
